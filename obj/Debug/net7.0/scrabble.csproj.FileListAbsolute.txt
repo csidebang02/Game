@@ -1,0 +1,15 @@
+D:\scrabble\obj\Debug\net7.0\scrabble.csproj.AssemblyReference.cache
+D:\scrabble\obj\Debug\net7.0\scrabble.GeneratedMSBuildEditorConfig.editorconfig
+D:\scrabble\obj\Debug\net7.0\scrabble.AssemblyInfoInputs.cache
+D:\scrabble\obj\Debug\net7.0\scrabble.AssemblyInfo.cs
+D:\scrabble\obj\Debug\net7.0\scrabble.csproj.CoreCompileInputs.cache
+D:\scrabble\bin\Debug\net7.0\scrabble.exe
+D:\scrabble\bin\Debug\net7.0\scrabble.deps.json
+D:\scrabble\bin\Debug\net7.0\scrabble.runtimeconfig.json
+D:\scrabble\bin\Debug\net7.0\scrabble.dll
+D:\scrabble\bin\Debug\net7.0\scrabble.pdb
+D:\scrabble\obj\Debug\net7.0\scrabble.dll
+D:\scrabble\obj\Debug\net7.0\refint\scrabble.dll
+D:\scrabble\obj\Debug\net7.0\scrabble.pdb
+D:\scrabble\obj\Debug\net7.0\scrabble.genruntimeconfig.cache
+D:\scrabble\obj\Debug\net7.0\ref\scrabble.dll
