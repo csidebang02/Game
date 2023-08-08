@@ -1,29 +1,33 @@
-public class Bag
+using System;
+using System.Collections.Generic;
+
+namespace ScrabbleGame
 {
-    private List<char> letters; //string
-
-    public Bag()
+    class Bag
     {
-        letters = new List<char>();
-        // Initialize the bag with letters
-        for (char letter = 'A'; letter <= 'Z'; letter++)
+        private string letters;
+
+        public Bag(string initialLetters)
         {
-            letters.Add(letter);
+            letters = initialLetters;
         }
-    }
 
-    public void AddLetter(char letter)
-    {
-        letters.Add(letter);
-    }
-
-    public bool RemoveLetter(char letter)
-    {
-        if (letters.Contains(letter))
+        public string DrawLetters(int count)
         {
-            letters.Remove(letter);
-            return true;
+            if (count > letters.Length)
+            {
+                count = letters.Length;
+            }
+
+            string drawnLetters = letters.Substring(0, count);
+            letters = letters.Remove(0, count);
+
+            return drawnLetters;
         }
-        return false;
+
+        public void RefillLetters(string discardedLetters)
+        {
+            letters += discardedLetters;
+        }
     }
 }

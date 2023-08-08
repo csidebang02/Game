@@ -1,4 +1,10 @@
-public interface IBoard
+namespace ScrabbleGame
 {
-    int GetBoardSize();
+	interface IBoard
+	{
+		int GetBoardSize();
+		char GetLetterAtPosition(int x, int y);
+		Position GetLetterPosition(char letter);
+
+	}
 }
