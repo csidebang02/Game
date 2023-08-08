@@ -13,6 +13,7 @@ namespace ScrabbleGame
 		private Bag bag;
 		private ScoreCounter scoreCounter;
 		private Dictionary dictionary;
+		private Rack rack;
 
 		public GameRunner(int boardSize, string initialLetters)
 		{
@@ -66,9 +67,26 @@ namespace ScrabbleGame
 		{
 			//tambah validasi terkait 
 				//cek posisi yg diinput itu valid atau ngga? dicek dengan cara bandingkan dengan size
+			int boardSize = board.GetBoardSize();
+			if (x < 0 || x >= boardSize || y < 0 || y >= boardSize);
+			{
+				return false;
+			}
 				//cek sudah ada huruf di situ atau belum? kalau sudah ada, return false
+			if (!board.IsPositionEmpty(x, y))
+			{
+				return false;
+			}
 				//cek playerRacks, dia punya huruf yg diinput ga? kalo ga, return false
+			Rack rack = playerRacks[currentPlayer];
+			if (!rack.ContainsLetter(letter))
+			{
+				return false;
+			}
 				//kalo melewati itu semua, maka simpan ke dalam Board -> BoardLetters
+			board.PlaceLetterAtPosition(x, y, letter);
+			playerSetLetter[new Position(x, y)] = letter;
+			rack.RemoveLetter(letter);
 			// Implement word placement logic here
 			return true;
 		}
