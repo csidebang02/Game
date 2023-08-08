@@ -87,12 +87,19 @@ namespace ScrabbleGame
 			board.PlaceLetterAtPosition(x, y, letter);
 			playerSetLetter[new Position(x, y)] = letter;
 			rack.RemoveLetter(letter);
+				//kalo melewati itu semua, maka simpan ke dalam Board -> BoardLetters, lalu return true
 			// Implement word placement logic here
 			return true;
 		}
 
 		public void SubmitTurn()
 		{
+			// mengganti currentplayer dari player lain di dalam list Players
+			// ambil currentPlayer
+			// ambil currentplayer tsb di dalam list Players dengan menggunakan player id
+			// set currentPlayer menjadi player selanjutnya (ambil dari list Players dengan menggunakan player id dari currentPlayer sebelumnya, lalu + 1)
+			// kalau player id + 1 dari currentPlayer tidak ada, maka kembali lagi set player id 1 sebagai currentPlayer
+			// tidak perlu return apa-apa, karena void 
 			// Implement submitting turn logic here
 		}
 
