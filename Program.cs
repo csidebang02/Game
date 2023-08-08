@@ -4,7 +4,7 @@ namespace ScrabbleGame
 {
     class Program
     {
-        // Fungsi untuk menggambar papan permainan
+        // Fungsi untuk menggambar papan permainan ini perubahan 
         static void DrawBoard(GameRunner game)
         {
             int boardSize = game.GetBoardSize();
