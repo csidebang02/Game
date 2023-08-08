@@ -7,9 +7,11 @@ public class ScoreCounter
         letterValidCount = new Dictionary<Position, char>();
     }
 
-    public int CalculateScore()
+    public int CalculateScore(IPlayer player)
     {
         // Implement your scoring logic here
-        return 0;
+        int score = 0;
+        // Calculate the score based on the player's letters and board state
+        return score;
     }
 }

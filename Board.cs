@@ -3,12 +3,12 @@ namespace ScrabbleGame
 	class Board : IBoard
 	{
 		private int _boardSize;
-		private char[,] _boardLetters;
+		private string[,] _boardLetters;
 
 		public Board(int size)
 		{
 			_boardSize = size;
-			_boardLetters = new char[size, size];
+			_boardLetters = new string[size, size];
 		}
 
 		public int GetBoardSize()
@@ -16,21 +16,21 @@ namespace ScrabbleGame
 			return _boardSize;
 		}
 
-		public char GetLetterAtPosition(int x, int y)
+		public string GetLetterAtPosition(int x, int y)
 		{
 			return _boardLetters[x, y];
 		}
 
-		public void PlaceLetterAtPosition(int x, int y, char letter)
+		public void PlaceLetterAtPosition(int x, int y, string letter)
 		{
 			_boardLetters[x, y] = letter;
 		}
 
 		public bool IsPositionEmpty(int x, int y)
 		{
-			return _boardLetters[x, y] == '\0';
+			return _boardLetters[x, y] == null;
 		}
-		public Position GetLetterPosition(char letter)
+		public Position GetLetterPosition(string letter)
 		{
 			for (int y = 0; y < _boardSize; y++)
 			{

@@ -3,9 +3,9 @@ namespace ScrabbleGame
 	interface IBoard
 	{
 		int GetBoardSize();
-		char GetLetterAtPosition(int x, int y);
-		Position GetLetterPosition(char letter);
-		void PlaceLetterAtPosition(int x, int y, char letter);
+		string GetLetterAtPosition(int x, int y);
+		Position GetLetterPosition(string letter);
+		void PlaceLetterAtPosition(int x, int y, string letter);
 		bool IsPositionEmpty(int x, int y);
 	}
 }
