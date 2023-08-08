@@ -64,6 +64,11 @@ namespace ScrabbleGame
 
 		public bool SetWord(int x, int y, char letter)
 		{
+			//tambah validasi terkait 
+				//cek posisi yg diinput itu valid atau ngga? dicek dengan cara bandingkan dengan size
+				//cek sudah ada huruf di situ atau belum? kalau sudah ada, return false
+				//cek playerRacks, dia punya huruf yg diinput ga? kalo ga, return false
+				//kalo melewati itu semua, maka simpan ke dalam Board -> BoardLetters
 			// Implement word placement logic here
 			return true;
 		}
