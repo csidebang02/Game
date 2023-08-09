@@ -8,7 +8,7 @@ namespace ScrabbleGame
         static void DrawBoard(GameRunner game)
         {
             int boardSize = game.GetBoardSize();
-            Console.WriteLine("+----+----+----+----+----+----+----+----+----+");
+            Console.WriteLine("+-----------------------------------------------------------+");
             for (int y = 0; y < boardSize; y++)
             {
                 for (int x = 0; x < boardSize; x++)
@@ -17,7 +17,7 @@ namespace ScrabbleGame
                     Console.Write($"| {letter} ");
                 }
                 Console.WriteLine("|");
-                Console.WriteLine("+----+----+----+----+----+----+----+----+----+");
+                Console.WriteLine("+-----------------------------------------------------------+");
             }
             Console.WriteLine("");
         }
