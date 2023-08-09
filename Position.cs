@@ -1,11 +1,11 @@
 public class Position
 {
-    private int rank;
-    private int file;
+    public int X {get; }
+    public int Y {get; }
 
     public Position(int x, int y)
     {
-        rank = x;
-        file = y;
+        X = x;
+        Y = y;
     }
 }

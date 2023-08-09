@@ -1,6 +1,6 @@
 namespace ScrabbleGame
 {
-	interface IBoard
+	public interface IBoard
 	{
 		int GetBoardSize();
 		string GetLetterAtPosition(int x, int y);

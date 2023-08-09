@@ -15,10 +15,9 @@ namespace ScrabbleGame
 		private Bag bag;
 		private ScoreCounter scoreCounter;
 		private Dictionary dictionary;
-		private Rack rack;
 		private List<int> playerKeys;
 		private int _boardSize;
-		private string[,] _boardLetters; 
+		private string[,] _boardLetters;
 
 		public GameRunner(int boardSize, string initialLetters)
 		{
@@ -30,8 +29,14 @@ namespace ScrabbleGame
 			bag = new Bag(initialLetters);
 			scoreCounter = new ScoreCounter();
 			dictionary = new Dictionary();
+			playerKeys = new List<int>();
 			_boardSize = boardSize;
-			_boardLetters = new string[boardSize, boardSize];
+			_boardLetters  = new string[boardSize, boardSize];
+			
+			for (int i = 1; i <= 2; i++)
+			{
+				playerKeys.Add(i);
+			}
 		}
 		
 		public string GetBoardLetter(int x, int y)
@@ -131,7 +136,6 @@ namespace ScrabbleGame
 			}
 		}
 
-
 		public void SkipTurn()
 		{
 			int currentPlayerId = currentPlayer.GetId();
@@ -181,18 +185,17 @@ namespace ScrabbleGame
 
 		public string ShowBoard()
 		{
-			int boardSize = board.GetBoardSize();
 			StringBuilder boardDisplay = new StringBuilder();
 
-			for (int y = 0; y < boardSize; y++)
+			for (int y = 0; y < _boardSize; y++)
 			{
-				for (int x = 0; x < boardSize; x++)
+				for (int x = 0; x < _boardSize; x++)
 				{
-					string letter = board.GetLetterAtPosition(x, y);
+					string letter = _boardLetters[x, y];
 					boardDisplay.Append($"| {letter} ");
 				}
 				boardDisplay.AppendLine("|");
-				boardDisplay.AppendLine(new string('-', boardSize * 5 + 1)); // Horizontal separator
+				boardDisplay.AppendLine(new string('-', _boardSize * 5 + 1)); // Horizontal separator
 			}
 
 			return boardDisplay.ToString();
@@ -204,23 +207,23 @@ namespace ScrabbleGame
 		}
 
 		 public IPlayer CheckWinner()
-        {
-            IPlayer winner = null;
-            int highestScore = 0;
+		{
+			IPlayer winner = null;
+			int highestScore = 0;
 
-            foreach (var player in players.Values)
-            {
-                int playerScore = scoreCounter.CalculateScore(player);
+			foreach (var player in players.Values)
+			{
+				int playerScore = scoreCounter.CalculateScore(player);
 
-                if (playerScore > highestScore)
-                {
-                    highestScore = playerScore;
-                    winner = player;
-                }
-            }
+				if (playerScore > highestScore)
+				{
+					highestScore = playerScore;
+					winner = player;
+				}
+			}
 
-            return winner;
-        }
+			return winner;
+		}
 
 		private int CalculatePlayerScore(IPlayer player)
 		{

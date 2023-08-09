@@ -1,3 +1,5 @@
+using System;
+
 namespace ScrabbleGame
 {
 	class Board : IBoard
@@ -28,7 +30,7 @@ namespace ScrabbleGame
 
 		public bool IsPositionEmpty(int x, int y)
 		{
-			return _boardLetters[x, y] == null;
+			return string.IsNullOrEmpty(_boardLetters[x, y]);
 		}
 		public Position GetLetterPosition(string letter)
 		{
