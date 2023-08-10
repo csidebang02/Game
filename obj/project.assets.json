@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\scrabble\\scrabble.csproj",
+      "projectUniqueName": "C:\\Users\\Batch 3\\Downloads\\Game\\scrabble.csproj",
       "projectName": "scrabble",
-      "projectPath": "D:\\scrabble\\scrabble.csproj",
+      "projectPath": "C:\\Users\\Batch 3\\Downloads\\Game\\scrabble.csproj",
       "packagesPath": "C:\\Users\\Batch 3\\.nuget\\packages\\",
-      "outputPath": "D:\\scrabble\\obj\\",
+      "outputPath": "C:\\Users\\Batch 3\\Downloads\\Game\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Batch 3\\AppData\\Roaming\\NuGet\\NuGet.Config"
