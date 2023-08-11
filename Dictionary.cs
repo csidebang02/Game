@@ -6,7 +6,14 @@ public class Dictionary
 	public Dictionary()
 	{
 		words = new HashSet<string>();
-		// You can manually add valid words here if needed
+		// {
+		// 	// Add valid word here
+		// 	"APPLE",
+		// 	"BANANA",
+		// 	"CAT",
+		// 	//...(add more words)
+		// };
+		// // You can manually add valid words here if needed
 	}
 
 	public void AddWord(string word)
@@ -16,6 +23,6 @@ public class Dictionary
 
 	public bool LookUp(string word)
 	{
-		return words.Contains(word);
+		return words.Contains(word.ToUpper());
 	}
 }

@@ -28,3 +28,18 @@ C:\Users\Batch 3\Downloads\Game\obj\Debug\net7.0\refint\scrabble.dll
 C:\Users\Batch 3\Downloads\Game\obj\Debug\net7.0\scrabble.pdb
 C:\Users\Batch 3\Downloads\Game\obj\Debug\net7.0\scrabble.genruntimeconfig.cache
 C:\Users\Batch 3\Downloads\Game\obj\Debug\net7.0\ref\scrabble.dll
+D:\Game\bin\Debug\net7.0\scrabble.exe
+d:\Game\bin\Debug\net7.0\scrabble.deps.json
+d:\Game\bin\Debug\net7.0\scrabble.runtimeconfig.json
+D:\Game\bin\Debug\net7.0\scrabble.dll
+D:\Game\bin\Debug\net7.0\scrabble.pdb
+D:\Game\obj\Debug\net7.0\scrabble.csproj.AssemblyReference.cache
+D:\Game\obj\Debug\net7.0\scrabble.GeneratedMSBuildEditorConfig.editorconfig
+D:\Game\obj\Debug\net7.0\scrabble.AssemblyInfoInputs.cache
+D:\Game\obj\Debug\net7.0\scrabble.AssemblyInfo.cs
+D:\Game\obj\Debug\net7.0\scrabble.csproj.CoreCompileInputs.cache
+D:\Game\obj\Debug\net7.0\scrabble.dll
+D:\Game\obj\Debug\net7.0\refint\scrabble.dll
+D:\Game\obj\Debug\net7.0\scrabble.pdb
+d:\Game\obj\Debug\net7.0\scrabble.genruntimeconfig.cache
+d:\Game\obj\Debug\net7.0\ref\scrabble.dll

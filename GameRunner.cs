@@ -18,6 +18,8 @@ namespace ScrabbleGame
 		private List<int> playerKeys;
 		private int _boardSize;
 		private string[,] _boardLetters;
+		private int[,] wordMultipliers;
+		private int[,] letterMultipliers;
 
 		public GameRunner(int boardSize, string initialLetters)
 		{
@@ -32,11 +34,33 @@ namespace ScrabbleGame
 			playerKeys = new List<int>();
 			_boardSize = boardSize;
 			_boardLetters  = new string[boardSize, boardSize];
+			wordMultipliers = new int[boardSize, boardSize];
+			letterMultipliers = new int[boardSize, boardSize];
 			
-			for (int i = 1; i <= 2; i++)
+			for (int x = 0; x < boardSize; x++)
 			{
-				playerKeys.Add(i);
+				for (int y = 0; y < boardSize; y++)
+				{
+					if (x == y || x == boardSize - y - 1)
+					{
+						wordMultipliers[x, y] = 2;
+					}
+					else if ((x % 4 == 1 && 4 == 1) || (x % 4 == 3 && y % 4 == 3))
+					{
+						letterMultipliers[x, y] = 3;
+					}
+				}
 			}
+		}
+		
+		public int GetWordMultiplier(Position position)
+		{
+			return wordMultipliers[position.X, position.Y];
+		}
+		
+		public int GetLetterMultiplier(Position position)
+		{
+			return letterMultipliers[position.X, position.Y];
 		}
 		
 		public string GetBoardLetter(int x, int y)

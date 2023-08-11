@@ -22,14 +22,14 @@ public class Rack
 
     public bool RemoveLetter(string letter)
     {
-        // for (int i = 0; i < letters.Length; i++)
-        // {
-        //     if (letters[i] == letter)
-        //     {
-        //         letters[i] = '\0';
-        //         return true;
-        //     }
-        // }
+        for (int i = 0; i < letters.Length; i++)
+        {
+            if (letters[i] == letter)
+            {
+                letters[i] = null;
+                return true;
+            }
+        }
         return false;
     }
 

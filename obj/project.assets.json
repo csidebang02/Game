@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Batch 3\\.nuget\\packages\\": {}
+    "C:\\Users\\Christian Sidebang\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Batch 3\\Downloads\\Game\\scrabble.csproj",
+      "projectUniqueName": "d:\\Game\\scrabble.csproj",
       "projectName": "scrabble",
-      "projectPath": "C:\\Users\\Batch 3\\Downloads\\Game\\scrabble.csproj",
-      "packagesPath": "C:\\Users\\Batch 3\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Batch 3\\Downloads\\Game\\obj\\",
+      "projectPath": "d:\\Game\\scrabble.csproj",
+      "packagesPath": "C:\\Users\\Christian Sidebang\\.nuget\\packages\\",
+      "outputPath": "d:\\Game\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Batch 3\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Christian Sidebang\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -59,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
       }
     }
   }

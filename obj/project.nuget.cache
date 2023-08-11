@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1mum7Q6tMZH95hB8dIrCnXdsRvWdmaAX3lVOGmneTiYkdn3+a7oAyxL/uD/lMcM/L3YzNuDxisAi9915denREA==",
+  "dgSpecHash": "fRzjaK7jcdrUC8Y/Y4dycG8P4llcOzlimAAGqsngAAzbfGLsey6oq3gArCt2zSgJYi1QGBFGJUVJ5ngdfbEKvg==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Batch 3\\Downloads\\Game\\scrabble.csproj",
+  "projectFilePath": "d:\\Game\\scrabble.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
