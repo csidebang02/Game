@@ -7,8 +7,8 @@ namespace ScrabbleGame
 {
 	public class GameRunner
 	{
-		private Dictionary<int, IPlayer> players;
-		private Dictionary<IPlayer, Rack> playerRacks;
+		private Dictionary<int, int> players;
+		private Dictionary<int, Rack> playerRacks;
 		private IBoard board;
 		private IPlayer currentPlayer;
 		private Dictionary<Position, string> playerSetLetter;
@@ -21,8 +21,8 @@ namespace ScrabbleGame
 
 		public GameRunner(int boardSize, string initialLetters)
 		{
-			players = new Dictionary<int, IPlayer>();
-			playerRacks = new Dictionary<IPlayer, Rack>();
+			players = new Dictionary<int, int>();
+			playerRacks = new Dictionary<int, Rack>();
 			board = new Board(boardSize);
 			currentPlayer = null;
 			playerSetLetter = new Dictionary<Position, string>();
@@ -37,6 +37,7 @@ namespace ScrabbleGame
 			{
 				playerKeys.Add(i);
 			}
+			dictionary.SetWord("word.txt");
 		}
 		
 		public string GetBoardLetter(int x, int y)
@@ -51,15 +52,45 @@ namespace ScrabbleGame
 
 		public void AddPlayer(IPlayer player)
 		{
-			players.Add(player.GetId(), player);
-			Rack isiRack = new Rack();
-			string karakter = "D";
-			isiRack.AddLetter(karakter);
-			playerRacks.Add(player, isiRack);
+			players.Add(player.GetId(), 0);
 			if (currentPlayer == null)
 			{
 				currentPlayer = player;
 			}
+		}
+		
+		public string Brach()
+		{
+			int Length = 7;
+			string randomString = GenerateRandomString(Length);
+			return randomString;
+		}
+		
+		static string GenerateRandomString(int length)
+		{
+			const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			Random random = new Random();
+			char[] stringChars = new char[length];
+
+			for (int i = 0; i < length; i++)
+			{
+				stringChars[i] = chars[random.Next(length)];
+			}
+
+			return new string(stringChars);
+		}
+		
+		public void AddRack(IPlayer player)
+		{
+			Rack isiRack = new Rack();
+			string karakter = Brach();
+			foreach (char huruf in karakter)
+			{
+				isiRack.AddLetter(huruf.ToString());
+				Console.Write(huruf.ToString());
+			}
+				Console.WriteLine("|");
+			playerRacks.Add(player.GetId(), isiRack);
 		}
 
 		public bool IsGameEnd()
@@ -75,7 +106,7 @@ namespace ScrabbleGame
 
 		public Rack GetPlayerRack(IPlayer player)
 		{
-			return playerRacks[player];
+			return playerRacks[player.GetId()];
 		}
 
 		public bool SetWord(int x, int y, string letter)
@@ -98,7 +129,7 @@ namespace ScrabbleGame
 				return false;
 			}
 				//cek playerRacks, dia punya huruf yg diinput ga? kalo ga, return false
-			Rack rack = playerRacks[currentPlayer];
+			Rack rack = playerRacks[currentPlayer.GetId()];
 			if (!rack.ContainsLetter(letter))
 			{
 				Console.WriteLine("Player tidak mempunya huruf tersebut");
@@ -117,48 +148,48 @@ namespace ScrabbleGame
 		{
 			// mengganti currentplayer dari player lain di dalam list Players
 			// ambil currentPlayer
-			IPlayer currentPlayer = GetCurrentPlayer();
-			// ambil currentplayer tsb di dalam list Players dengan menggunakan player id
-			int currentPlayerIndex = playerKeys.IndexOf(currentPlayer.GetId());
+			// IPlayer currentPlayer = GetCurrentPlayer();
+			// // ambil currentplayer tsb di dalam list Players dengan menggunakan player id
+			// int currentPlayerIndex = playerKeys.IndexOf(currentPlayer.GetId());
 			
-			if (currentPlayerIndex != -1)
-			{
-				// set currentPlayer menjadi player selanjutnya (ambil dari list Players dengan menggunakan player id dari currentPlayer sebelumnya, lalu + 1)
-				int nextPlayerIndex = (currentPlayerIndex + 1) % playerKeys.Count;
-				int nextPlayerKey = playerKeys[nextPlayerIndex];
-				IPlayer nextPlayer = players[nextPlayerKey];
+			// if (currentPlayerIndex != -1)
+			// {
+			// 	// set currentPlayer menjadi player selanjutnya (ambil dari list Players dengan menggunakan player id dari currentPlayer sebelumnya, lalu + 1)
+			// 	int nextPlayerIndex = (currentPlayerIndex + 1) % playerKeys.Count;
+			// 	int nextPlayerKey = playerKeys[nextPlayerIndex];
+			// 	IPlayer nextPlayer = players[nextPlayerKey];
 				
-				// Mengubah currentPlayer menjadi nextPlayer
-				currentPlayer = nextPlayer;
+			// 	// Mengubah currentPlayer menjadi nextPlayer
+			// 	currentPlayer = nextPlayer;
 				
-				// Memperbarui currentPlayer dalam objek GameRunner
-				this.currentPlayer = currentPlayer;
-			}
+			// 	// Memperbarui currentPlayer dalam objek GameRunner
+			// 	this.currentPlayer = currentPlayer;
+			// }
 		}
 
 		public void SkipTurn()
 		{
-			int currentPlayerId = currentPlayer.GetId();
-			int currentPlayerIndex = playerKeys.IndexOf(currentPlayerId);
+			// int currentPlayerId = currentPlayer.GetId();
+			// int currentPlayerIndex = playerKeys.IndexOf(currentPlayerId);
 
-			if (currentPlayerIndex != -1)
-			{
-				// Calculate the index of the next player to take a turn
-				int nextPlayerIndex = (currentPlayerIndex + 1) % playerKeys.Count;
-				int nextPlayerKey = playerKeys[nextPlayerIndex];
-				IPlayer nextPlayer = players[nextPlayerKey];
+			// if (currentPlayerIndex != -1)
+			// {
+			// 	// Calculate the index of the next player to take a turn
+			// 	int nextPlayerIndex = (currentPlayerIndex + 1) % playerKeys.Count;
+			// 	int nextPlayerKey = playerKeys[nextPlayerIndex];
+			// 	IPlayer nextPlayer = players[nextPlayerKey];
 
-				// Set the current player to the next player
-				currentPlayer = nextPlayer;
+			// 	// Set the current player to the next player
+			// 	currentPlayer = nextPlayer;
 
-				Console.WriteLine($"{currentPlayer.GetName()} skips their turn.");
-			}
+			// 	Console.WriteLine($"{currentPlayer.GetName()} skips their turn.");
+			// }
 		}
 
 		public string ShowTurnStatus()
 		{
 			string currentPlayerName = currentPlayer.GetName();
-			string rackLetters = string.Join(", ", playerRacks[currentPlayer].Letters);
+			string rackLetters = string.Join(", ", playerRacks[currentPlayer.GetId()].Letters);
 
 			string turnStatus = $"Current Player: {currentPlayerName}\n";
 			turnStatus += $"Rack Letters: {rackLetters}\n";
@@ -211,16 +242,16 @@ namespace ScrabbleGame
 			IPlayer winner = null;
 			int highestScore = 0;
 
-			foreach (var player in players.Values)
-			{
-				int playerScore = scoreCounter.CalculateScore(player);
+			// foreach (var player in players.Values)
+			// {
+			// 	int playerScore = scoreCounter.CalculateScore(player);
 
-				if (playerScore > highestScore)
-				{
-					highestScore = playerScore;
-					winner = player;
-				}
-			}
+			// 	if (playerScore > highestScore)
+			// 	{
+			// 		highestScore = playerScore;
+			// 		winner = player;
+			// 	}
+			// }
 
 			return winner;
 		}
@@ -231,16 +262,16 @@ namespace ScrabbleGame
 			int score = 0;
 
 			// Retrieve the letters placed by the player and calculate their score
-			Rack rack = playerRacks[player];
-			foreach (var position in playerSetLetter.Keys)
-			{
-				string letter = playerSetLetter[position];
-				// Calculate the score for the letter based on the board position and any multipliers
-				// Add the score to the player's total score
-				// score += ...
+			// Rack rack = playerRacks[player];
+			// foreach (var position in playerSetLetter.Keys)
+			// {
+			// 	string letter = playerSetLetter[position];
+			// 	// Calculate the score for the letter based on the board position and any multipliers
+			// 	// Add the score to the player's total score
+			// 	// score += ...
 
-				// You can use methods from your ScoreCounter class to calculate the letter score
-			}
+			// 	// You can use methods from your ScoreCounter class to calculate the letter score
+			// }
 
 			return score;
 		}
