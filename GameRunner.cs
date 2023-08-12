@@ -58,6 +58,111 @@ namespace ScrabbleGame
 				currentPlayer = player;
 			}
 		}
+
+		public void CompleteTurn()
+		{
+			IPlayer currentPlayer = GetCurrentPlayer();
+			Rack rack = GetPlayerRack(currentPlayer);
+
+			Console.WriteLine("Do you want to continue placing letters or complete your turn?");
+			Console.WriteLine("1. Continue placing letters");
+			Console.WriteLine("2. Complete turn and check for valid words");
+
+			int choice = int.Parse(Console.ReadLine());
+
+			if (choice == 1)
+			{
+				// Continue placing letters
+				Console.Write("Enter the coordinates (x y) where you want to place the letter: ");
+				int x = int.Parse(Console.ReadLine());
+				int y = int.Parse(Console.ReadLine());
+
+				Console.Write("Enter the letter you want to place: ");
+				string letter = Console.ReadLine();
+
+				ValidateTurn validator = new ValidateTurn(board, playerSetLetter, dictionary);
+
+				if (!validator.CheckValidPlacement())
+				{
+					Console.WriteLine("Invalid placement. Letters must be placed adjacent to existing letters.");
+					return;
+				}
+
+				if (!rack.ContainsLetter(letter))
+				{
+					Console.WriteLine("Invalid letter. You don't have this letter in your rack.");
+					return;
+				}
+
+				// Place the letter on the board
+				if (board.IsPositionEmpty(x, y))
+				{
+					board.PlaceLetterAtPosition(x, y, letter);
+					playerSetLetter[new Position(x, y)] = letter;
+					rack.RemoveLetter(letter);
+
+					// Optionally, display the updated board
+					Console.WriteLine(ShowBoard());
+				}
+				else
+				{
+					Console.WriteLine("Invalid placement. The position is already occupied.");
+				}
+			}
+			else if (choice == 2)
+			{
+				// Complete the turn and check for valid words
+				ValidateTurn validator = new ValidateTurn(board, playerSetLetter, dictionary);
+				
+				if (!validator.CheckConnectTiles())
+				{
+					Console.WriteLine("Invalid placement. Letters must be connected to existing tiles.");
+					return;
+				}
+
+				if (!validator.CheckValidPlacement())
+				{
+					Console.WriteLine("Invalid placement. Letters must be placed adjacent to existing letters.");
+					return;
+				}
+
+				bool isValidWord = validator.ValidateWord();
+				if (isValidWord)
+				{
+					// Calculate the score for the player and update their score
+					int score = CalculatePlayerScore(currentPlayer);
+					players[currentPlayer.GetId()] = score;
+
+					// Remove letters from the player's rack
+					foreach (var position in playerSetLetter.Keys)
+					{
+						string letter = playerSetLetter[position];
+						rack.RemoveLetter(letter);
+					}
+
+					// Refill the player's rack from the bag
+					string discardedLetters = string.Join("", playerSetLetter.Values);
+					bag.RefillLetters(discardedLetters);
+					AddRack(currentPlayer);
+
+					// Clear the placed letters from the board
+					playerSetLetter.Clear();
+
+					// Move to the next player's turn
+					SubmitTurn();
+				}
+				else
+				{
+					Console.WriteLine("Invalid word. Please try again.");
+					// Optionally, allow the player to modify their word and try again
+					// ...
+				}
+			}
+			else
+			{
+				Console.WriteLine("Invalid choice.");
+			}
+		}
 		
 		public string Brach()
 		{
