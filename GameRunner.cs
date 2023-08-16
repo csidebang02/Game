@@ -6,9 +6,9 @@ using System.Text;
 namespace ScrabbleGame
 {
 	public class GameRunner
-	{
-		private Dictionary<int, IPlayer> players;
-		private Dictionary<IPlayer, Rack> playerRacks;
+	{ 
+		private Dictionary<int, int> players;
+		private Dictionary<int, Rack> playerRacks;
 		private IBoard board;
 		private IPlayer currentPlayer;
 		private Dictionary<Position, string> playerSetLetter;
@@ -84,6 +84,142 @@ namespace ScrabbleGame
 			{
 				currentPlayer = player;
 			}
+		}
+		
+		public bool CheckWord(string word)
+		{
+			return dictionary.LookUp(word);
+		}
+
+		// public void CompleteTurn()
+		// {
+		// 	IPlayer currentPlayer = GetCurrentPlayer();
+		// 	Rack rack = GetPlayerRack(currentPlayer);
+		// 	if (choice == 1)
+		// 	{
+		// 		// Continue placing letters
+		// 		Console.Write("Enter the coordinates (x y) where you want to place the letter: ");
+		// 		int x = int.Parse(Console.ReadLine());
+		// 		int y = int.Parse(Console.ReadLine());
+
+		// 		Console.Write("Enter the letter you want to place: ");
+		// 		string letter = Console.ReadLine();
+
+		// 		ValidateTurn validator = new ValidateTurn(board, playerSetLetter, dictionary);
+
+		// 		if (!validator.CheckValidPlacement())
+		// 		{
+		// 			Console.WriteLine("Invalid placement. Letters must be placed adjacent to existing letters.");
+		// 			return;
+		// 		}
+
+		// 		if (!rack.ContainsLetter(letter))
+		// 		{
+		// 			Console.WriteLine("Invalid letter. You don't have this letter in your rack.");
+		// 			return;
+		// 		}
+
+		// 		// Place the letter on the board
+		// 		if (board.IsPositionEmpty(x, y))
+		// 		{
+		// 			board.PlaceLetterAtPosition(x, y, letter);
+		// 			playerSetLetter[new Position(x, y)] = letter;
+		// 			rack.RemoveLetter(letter);
+
+		// 			// Optionally, display the updated board
+		// 			Console.WriteLine(ShowBoard());
+		// 		}
+		// 		else
+		// 		{
+		// 			Console.WriteLine("Invalid placement. The position is already occupied.");
+		// 		}
+		// 	}
+		// 	else if (choice == 2)
+		// 	{
+		// 		// Complete the turn and check for valid words
+		// 		ValidateTurn validator = new ValidateTurn(board, playerSetLetter, dictionary);
+				
+		// 		if (!validator.CheckConnectTiles())
+		// 		{
+		// 			Console.WriteLine("Invalid placement. Letters must be connected to existing tiles.");
+		// 			return;
+		// 		}
+
+		// 		if (!validator.CheckValidPlacement())
+		// 		{
+		// 			Console.WriteLine("Invalid placement. Letters must be placed adjacent to existing letters.");
+		// 			return;
+		// 		}
+
+		// 		bool isValidWord = validator.ValidateWord();
+		// 		if (isValidWord)
+		// 		{
+		// 			// Calculate the score for the player and update their score
+		// 			int score = CalculatePlayerScore(currentPlayer);
+		// 			players[currentPlayer.GetId()] = score;
+
+		// 			// Remove letters from the player's rack
+		// 			foreach (var position in playerSetLetter.Keys)
+		// 			{
+		// 				string letter = playerSetLetter[position];
+		// 				rack.RemoveLetter(letter);
+		// 			}
+
+		// 			// Refill the player's rack from the bag
+		// 			string discardedLetters = string.Join("", playerSetLetter.Values);
+		// 			bag.RefillLetters(discardedLetters);
+		// 			AddRack(currentPlayer);
+
+		// 			// Clear the placed letters from the board
+		// 			playerSetLetter.Clear();
+
+		// 			// Move to the next player's turn
+		// 			SubmitTurn();
+		// 		}
+		// 		else
+		// 		{
+		// 			Console.WriteLine("Invalid word. Please try again.");
+		// 			// Optionally, allow the player to modify their word and try again
+		// 		}
+		// 	}
+		// 	else
+		// 	{
+		// 		Console.WriteLine("Invalid choice.");
+		// 	}
+		// }
+		
+		public string Brach()
+		{
+			int Length = 7;
+			string randomString = GenerateRandomString(Length);
+			return randomString;
+		}
+		
+		static string GenerateRandomString(int length)
+		{
+			const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			Random random = new Random();
+			char[] stringChars = new char[length];
+
+			for (int i = 0; i < length; i++)
+			{
+				stringChars[i] = chars[random.Next(length)];
+			}
+
+			return new string(stringChars);
+		}
+		
+		public void AddRack(IPlayer player)
+		{
+			Rack isiRack = new Rack();
+			string karakter = Brach();
+			foreach (char huruf in karakter)
+			{
+				isiRack.AddLetter(huruf.ToString());
+				Console.Write(huruf.ToString());
+			}
+				Console.WriteLine("|");
+			playerRacks.Add(player.GetId(), isiRack);
 		}
 
 		public bool IsGameEnd()
