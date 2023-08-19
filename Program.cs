@@ -46,7 +46,7 @@ namespace ScrabbleGame
 				IPlayer currentPlayer = game.GetCurrentPlayer();
 				Console.WriteLine($"Current Player: {currentPlayer.GetName()}");
 				DrawBoard(game); // Menampilkan papan permainan
-
+				
 				Console.Write("Enter the coordinates (x y) where you want to place the letter: ");
 				int x = int.Parse(Console.ReadLine());
 				int y = int.Parse(Console.ReadLine());
@@ -62,8 +62,31 @@ namespace ScrabbleGame
 				{
 					Console.WriteLine("Invalid placement. Try again.\n");
 				}
+				
+				Console.WriteLine("Choose an action:");
+				Console.WriteLine("1. Continue placing letters");
+				Console.WriteLine("2. Complate turn");
+				
+				int choice = int .Parse(Console.ReadLine());
+				if (choice == 1)
+				{
+					continue; // to do implement logic
+				}
+				else if (choice == 2)
+				{
+					Console.WriteLine("Melakukan pengecekan kata");
+					if (game.CheckWord())
+					{
+						Console.WriteLine("Kata Benar");
+					}
+					else 
+					{
+						Console.WriteLine("Kata Salah");
+					} 
+					continue;
+				}
 
-				// game.SubmitTurn();
+				
 			}
 
 			Console.WriteLine("Game Over!");

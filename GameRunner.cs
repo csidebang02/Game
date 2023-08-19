@@ -18,6 +18,7 @@ namespace ScrabbleGame
 		private List<int> playerKeys;
 		private int _boardSize;
 		private string[,] _boardLetters;
+		private List<Position> listPosition;
 
 		public GameRunner(int boardSize, string initialLetters)
 		{
@@ -32,6 +33,7 @@ namespace ScrabbleGame
 			playerKeys = new List<int>();
 			_boardSize = boardSize;
 			_boardLetters  = new string[boardSize, boardSize];
+			listPosition = new List<Position>();
 			
 			for (int i = 1; i <= 2; i++)
 			{
@@ -243,10 +245,19 @@ namespace ScrabbleGame
 				//kalo melewati itu semua, maka simpan ke dalam Board -> BoardLetters
 			board.PlaceLetterAtPosition(x, y, letter);
 			playerSetLetter[new Position(x, y)] = letter;
+			Position posisi = new Position(x, y);
+			listPosition.Add(posisi);
+			
 			// rack.RemoveLetter(letter);
 				//kalo melewati itu semua, maka simpan ke dalam Board -> BoardLetters, lalu return true
 			// Implement word placement logic here
 			return true;
+		}
+		
+		public bool CheckWord()
+		{
+			string word = board.GetWordFormPosition(listPosition);
+			return dictionary.LookUp(word);
 		}
 
 		public void SubmitTurn()

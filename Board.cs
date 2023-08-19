@@ -46,6 +46,17 @@ namespace ScrabbleGame
 			}
 			return null;
 		}
+		public string GetWordFormPosition(List<Position> WordPosition)
+		{
+			string wordFormed = "";
+			foreach (Position posisi in WordPosition)
+			{
+				string wordResult = GetLetterAtPosition(posisi.GetX(), posisi.GetY());
+				wordFormed += wordResult;
+			}
+			Console.WriteLine("Kata Terbentuk :" + wordFormed);
+			return wordFormed;
+		}
 		// ... (implementasi lainnya)
 	}
 }
