@@ -31,7 +31,7 @@ public class Dictionary
 				// Tambahkan setiap kata ke dalam himpunan
 				foreach (string line in lines)
 				{
-					string word = line.Trim().ToLower();
+					string word = line.Trim();
 					wordSet.Add(word);
 				}
 			}

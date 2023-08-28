@@ -57,6 +57,7 @@ namespace ScrabbleGame
 				if (game.SetWord(x, y, letter))
 				{
 					Console.WriteLine("Word placed successfully!\n");
+					//To do Tambah logic hapus kata dari rack
 				}
 				else
 				{

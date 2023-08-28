@@ -199,6 +199,11 @@ namespace ScrabbleGame
 				Console.WriteLine("|");
 			playerRacks.Add(player.GetId(), isiRack);
 		}
+		
+		public void DeleteWordFromRacks(IPlayer currentPlayer, string removedWord)
+		{
+			//Implementasi
+		} 
 
 		public bool IsGameEnd()
 		{
